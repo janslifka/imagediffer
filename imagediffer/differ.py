@@ -13,7 +13,7 @@ def euclidean_distance(image1, image2):
 def chebyshev_distance(image1, image2):
     r1, g1, b1 = extract_colors(image1)
     r2, g2, b2 = extract_colors(image2)
-    return np.maximum(np.fabs(r1 - r2), np.fabs(g1 - g2), np.fabs(b1 - b2))
+    return np.maximum(np.maximum(np.fabs(r1 - r2), np.fabs(g1 - g2)), np.fabs(b1 - b2))
 
 
 def diff(image1, image2, compare_colors_method, tolerance=0, diff_color=(255, 0, 255)):

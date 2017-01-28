@@ -123,8 +123,10 @@ class App:
             if image1.shape == image2.shape:
                 diff_image, pctg = diff(image1, image2, self._comparison_method, self._tolerance)
                 self._show_image(self._diff_image_scroll_area, diff_image)
+                self._mismatch_value.setText('{}%'.format(round(pctg * 100, 2)))
             else:
                 self._show_shape_not_match()
+                self._mismatch_value.setText('-')
 
     def _show_image(self, scroll_area, image):
         image = (image * 255).astype(np.uint8)

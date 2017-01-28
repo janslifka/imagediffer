@@ -31,7 +31,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QGroupBox" name="groupBox">
+        <widget class="QGroupBox" name="color_distance_method_box">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
            <horstretch>0</horstretch>
@@ -43,7 +43,7 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
-           <widget class="QRadioButton" name="radioButton">
+           <widget class="QRadioButton" name="method_euclidean_radio">
             <property name="text">
              <string>Euclidean distance</string>
             </property>
@@ -53,7 +53,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton_2">
+           <widget class="QRadioButton" name="method_chebyshev_radio">
             <property name="text">
              <string>Chebyshev distance</string>
             </property>
@@ -63,7 +63,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBox_2">
+        <widget class="QGroupBox" name="tolerance_box">
          <property name="title">
           <string>Tolerance</string>
          </property>
@@ -81,7 +81,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QSlider" name="horizontalSlider">
+           <widget class="QSlider" name="tolerance_slider">
             <property name="maximum">
              <number>100</number>
             </property>
@@ -97,13 +97,13 @@
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBox_3">
+        <widget class="QGroupBox" name="color_channel_box">
          <property name="title">
           <string>Color channels</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QRadioButton" name="radioButton_3">
+           <widget class="QRadioButton" name="color_colors_radio">
             <property name="text">
              <string>Colors</string>
             </property>
@@ -113,28 +113,28 @@
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton_4">
+           <widget class="QRadioButton" name="color_grayscale_radio">
             <property name="text">
              <string>Grayscale</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton_5">
+           <widget class="QRadioButton" name="color_red_radio">
             <property name="text">
              <string>Red</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton_6">
+           <widget class="QRadioButton" name="color_blue_radio">
             <property name="text">
              <string>Blue</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="radioButton_7">
+           <widget class="QRadioButton" name="color_green_radio">
             <property name="text">
              <string>Green</string>
             </property>
@@ -144,7 +144,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="groupBox_4">
+        <widget class="QGroupBox" name="stats_box">
          <property name="title">
           <string>Stats</string>
          </property>
@@ -157,7 +157,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="mismatch_value_label">
             <property name="text">
              <string>5.24%</string>
             </property>
@@ -174,7 +174,7 @@
            </widget>
           </item>
           <item row="1" column="1">
-           <widget class="QLabel" name="label_5">
+           <widget class="QLabel" name="mse_value_label">
             <property name="text">
              <string>102</string>
             </property>
@@ -191,7 +191,7 @@
            </widget>
           </item>
           <item row="2" column="1">
-           <widget class="QLabel" name="label_6">
+           <widget class="QLabel" name="ssim_value_label">
             <property name="text">
              <string>1.0</string>
             </property>
@@ -229,7 +229,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>181</width>
+         <width>183</width>
          <height>533</height>
         </rect>
        </property>
@@ -246,7 +246,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>181</width>
+         <width>183</width>
          <height>533</height>
         </rect>
        </property>
@@ -263,7 +263,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>181</width>
+         <width>183</width>
          <height>533</height>
         </rect>
        </property>
@@ -271,12 +271,6 @@
      </widget>
     </item>
    </layout>
-   <zorder>frame</zorder>
-   <zorder>groupBox</zorder>
-   <zorder>horizontalLayoutWidget</zorder>
-   <zorder>scrollArea</zorder>
-   <zorder>scrollArea_2</zorder>
-   <zorder>scrollArea_3</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

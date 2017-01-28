@@ -2,7 +2,13 @@ import pytest
 import numpy as np
 import math
 
+from imagediffer.loader import load_image_from_file
 from imagediffer.differ import euclidean_distance, chebyshev_distance, diff
+from imagediffer.utils import norm_color
+
+
+def load_test_image(name):
+    return load_image_from_file('tests/fixtures/{}.png'.format(name))
 
 
 @pytest.mark.parametrize('image1,image2,ref', [
@@ -49,3 +55,22 @@ def test_chebyshev_distance(image1, image2, ref):
     ref = np.array(ref)
     distances = chebyshev_distance(image1, image2)
     assert np.all(np.isclose(distances, ref))
+
+
+@pytest.mark.parametrize('image1,image2,diff_image,method,mismatch,tolerance,diff_color', [
+    ('red', 'blue', 'diff_all', euclidean_distance, 1., 0., (1., 0, 1.)),
+    ('red', 'blue', 'diff_all', chebyshev_distance, 1., 0., (1., 0, 1.)),
+    ('red', 'light_red', 'diff_red_left', euclidean_distance, .5, 0., (1., 0, 1.)),
+    ('red', 'light_red', 'diff_red_left', chebyshev_distance, .5, 0., (1., 0, 1.)),
+    ('red', 'light_red', 'red', euclidean_distance, 0., .3, (1., 0, 1.)),
+    ('red', 'light_red', 'red', chebyshev_distance, 0., .3, (1., 0, 1.)),
+    ('red', 'light_red', 'diff_red_left_yellow', euclidean_distance, .5, 0., (1., 1., 0.)),
+    ('red', 'light_red', 'diff_red_left_yellow', chebyshev_distance, .5, 0., (1., 1., 0.)),
+])
+def test_diff(image1, image2, diff_image, method, mismatch, tolerance, diff_color):
+    image1 = norm_color(load_test_image(image1))
+    image2 = norm_color(load_test_image(image2))
+    diff_image = norm_color(load_test_image(diff_image))
+    result, pctg = diff(image1, image2, method, tolerance, diff_color)
+    assert np.array_equal(result, diff_image)
+    assert abs(pctg - mismatch) < 0.0001

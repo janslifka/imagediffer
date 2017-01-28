@@ -128,7 +128,7 @@ class App:
 
     def _show_image(self, scroll_area, image):
         image = (image * 255).astype(np.uint8)
-        img = QtGui.QImage(image, image.shape[1], image.shape[0], image.shape[1] * 3, QtGui.QImage.Format_RGB888)
+        img = QtGui.QImage(image, image.shape[1], image.shape[0], image.shape[1] * 4, QtGui.QImage.Format_RGBA8888)
         image_label = QtWidgets.QLabel()
         image_label.setPixmap(QtGui.QPixmap(img))
         scroll_area.setWidget(image_label)

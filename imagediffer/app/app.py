@@ -1,8 +1,9 @@
 from PyQt5 import QtWidgets, uic
 
-from .config import PATH_UI_MAINWINDOW
+from .config import PATH_UI_MAINWINDOW, PATH_UI_OPEN_IMAGE
 from ..lib.differ import euclidean_distance, chebyshev_distance
-
+from ..lib.loader import load_image_from_file, load_image_from_url
+from .image_struct import ImageStruct
 
 COLOR_MODES = ['colors', 'grayscale', 'red', 'blue', 'green']
 
@@ -20,6 +21,10 @@ class App:
         self._init_tolerance()
         self._init_color_channels()
         self._init_stats()
+        self._init_menu_actions()
+
+        self._first_image = ImageStruct()
+        self._second_image = ImageStruct()
 
     def run(self):
         self._window.show()
@@ -51,6 +56,19 @@ class App:
         self._mse_value = self._window.findChild(QtWidgets.QLabel, 'mse_value_label')
         self._ssim_value = self._window.findChild(QtWidgets.QLabel, 'ssim_value_label')
 
+    def _init_menu_actions(self):
+        action = self._window.findChild(QtWidgets.QAction, 'action_load_first_image_from_file')
+        action.triggered.connect(lambda: self._load_first_image_from_file())
+
+        action = self._window.findChild(QtWidgets.QAction, 'action_load_second_image_from_file')
+        action.triggered.connect(lambda: self._load_second_image_from_file())
+
+        action = self._window.findChild(QtWidgets.QAction, 'action_load_first_image_from_URL')
+        action.triggered.connect(lambda: self._load_first_image_from_url())
+
+        action = self._window.findChild(QtWidgets.QAction, 'action_load_second_image_from_URL')
+        action.triggered.connect(lambda: self._load_second_image_from_url())
+
     def _set_method_euclidean(self, enabled):
         if enabled:
             self._comparison_method = euclidean_distance
@@ -71,4 +89,59 @@ class App:
         self._compare_images()
 
     def _compare_images(self):
-        print('Compare images: \nmethod: {}\nmode: {}\ntolerance: {}\n'.format(self._comparison_method, self._color_mode, self._tolerance))
+        print(
+            'Compare images: \nmethod: {}\nmode: {}\ntolerance: {}\n'.format(self._comparison_method, self._color_mode,
+                                                                             self._tolerance))
+
+    def _load_first_image_from_file(self):
+        image = self._load_image_from_file()
+        if image is not None:
+            self._first_image.image = image
+            self._compare_images()
+
+    def _load_second_image_from_file(self):
+        image = self._load_image_from_file()
+        if image is not None:
+            self._second_image.image = image
+            self._compare_images()
+
+    def _load_first_image_from_url(self):
+        image = self._load_image_from_url()
+        if image is not None:
+            self._first_image.image = image
+            self._compare_images()
+
+    def _load_second_image_from_url(self):
+        image = self._load_image_from_url()
+        if image is not None:
+            self._second_image.image = image
+            self._compare_images()
+
+    def _load_image_from_file(self):
+        file_name = QtWidgets.QFileDialog.getOpenFileName(self._window)
+        if len(file_name[0]) > 0:
+            try:
+                image = load_image_from_file(file_name[0])
+                return image
+            except:
+                QtWidgets.QMessageBox.critical(self._window, 'File error', 'Unable to open image from given file')
+        return None
+
+    def _load_image_from_url(self):
+        dialog = QtWidgets.QDialog()
+        with open(PATH_UI_OPEN_IMAGE) as f:
+            uic.loadUi(f, dialog)
+        result = dialog.exec_()
+
+        if result == QtWidgets.QDialog.Rejected:
+            return None
+
+        url = dialog.findChild(QtWidgets.QLineEdit, 'url').text()
+
+        try:
+            image = load_image_from_url(url)
+            return image
+        except:
+            QtWidgets.QMessageBox.critical(self._window, 'File error', 'Unable to open image from given URL')
+
+        return None

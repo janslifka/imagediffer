@@ -281,8 +281,39 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuImage">
+    <property name="title">
+     <string>Image</string>
+    </property>
+    <addaction name="action_load_first_image_from_file"/>
+    <addaction name="action_load_second_image_from_file"/>
+    <addaction name="separator"/>
+    <addaction name="action_load_first_image_from_URL"/>
+    <addaction name="action_load_second_image_from_URL"/>
+   </widget>
+   <addaction name="menuImage"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_load_first_image_from_file">
+   <property name="text">
+    <string>Load first image from file</string>
+   </property>
+  </action>
+  <action name="action_load_second_image_from_file">
+   <property name="text">
+    <string>Load second image from file</string>
+   </property>
+  </action>
+  <action name="action_load_first_image_from_URL">
+   <property name="text">
+    <string>Load first image from URL</string>
+   </property>
+  </action>
+  <action name="action_load_second_image_from_URL">
+   <property name="text">
+    <string>Load second image from URL</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

@@ -220,9 +220,12 @@
      </widget>
     </item>
     <item>
-     <widget class="QScrollArea" name="scrollArea">
+     <widget class="QScrollArea" name="first_image_scroll_area">
       <property name="widgetResizable">
        <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
       <widget class="QWidget" name="scrollAreaWidgetContents">
        <property name="geometry">
@@ -237,9 +240,12 @@
      </widget>
     </item>
     <item>
-     <widget class="QScrollArea" name="scrollArea_2">
+     <widget class="QScrollArea" name="diff_image_scroll_area">
       <property name="widgetResizable">
        <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
       <widget class="QWidget" name="scrollAreaWidgetContents_2">
        <property name="geometry">
@@ -254,9 +260,12 @@
      </widget>
     </item>
     <item>
-     <widget class="QScrollArea" name="scrollArea_3">
+     <widget class="QScrollArea" name="second_image_scroll_area">
       <property name="widgetResizable">
        <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
       <widget class="QWidget" name="scrollAreaWidgetContents_3">
        <property name="geometry">

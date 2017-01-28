@@ -1,4 +1,5 @@
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtWidgets, QtGui, uic
+import numpy as np
 
 from .config import PATH_UI_MAINWINDOW, PATH_UI_OPEN_IMAGE
 from ..lib.differ import euclidean_distance, chebyshev_distance, diff
@@ -21,6 +22,7 @@ class App:
         self._init_tolerance()
         self._init_color_channels()
         self._init_stats()
+        self._init_scroll_areas()
         self._init_menu_actions()
 
         self._first_image = ImageStruct()
@@ -57,6 +59,11 @@ class App:
         self._mse_value = self._window.findChild(QtWidgets.QLabel, 'mse_value_label')
         self._ssim_value = self._window.findChild(QtWidgets.QLabel, 'ssim_value_label')
 
+    def _init_scroll_areas(self):
+        self._first_image_scroll_area = self._window.findChild(QtWidgets.QScrollArea, 'first_image_scroll_area')
+        self._diff_image_scroll_area = self._window.findChild(QtWidgets.QScrollArea, 'diff_image_scroll_area')
+        self._second_image_scroll_area = self._window.findChild(QtWidgets.QScrollArea, 'second_image_scroll_area')
+
     def _init_menu_actions(self):
         action = self._window.findChild(QtWidgets.QAction, 'action_load_first_image_from_file')
         action.triggered.connect(lambda: self._load_first_image_from_file())
@@ -86,14 +93,10 @@ class App:
             self._compare_images()
 
     def _tolerance_changed(self):
-        self._tolerance = self._tolerance_slider.value()
+        self._tolerance = self._tolerance_slider.value() / 100.
         self._compare_images()
 
     def _compare_images(self):
-        if self._first_image.initialized and self._second_image.initialized:
-            self._create_diff()
-
-    def _create_diff(self):
         if self._color_mode == 'grayscale':
             image1 = self._first_image.grayscale
             image2 = self._second_image.grayscale
@@ -110,7 +113,30 @@ class App:
             image1 = self._first_image.image
             image2 = self._second_image.image
 
-        self._diff = diff(image1, image2, self._comparison_method, self._tolerance)
+        if image1 is not None:
+            self._show_image(self._first_image_scroll_area, image1)
+
+        if image2 is not None:
+            self._show_image(self._second_image_scroll_area, image2)
+
+        if image1 is not None and image2 is not None:
+            if image1.shape == image2.shape:
+                diff_image, pctg = diff(image1, image2, self._comparison_method, self._tolerance)
+                self._show_image(self._diff_image_scroll_area, diff_image)
+            else:
+                self._show_shape_not_match()
+
+    def _show_image(self, scroll_area, image):
+        image = (image * 255).astype(np.uint8)
+        img = QtGui.QImage(image, image.shape[1], image.shape[0], image.shape[1] * 3, QtGui.QImage.Format_RGB888)
+        image_label = QtWidgets.QLabel()
+        image_label.setPixmap(QtGui.QPixmap(img))
+        scroll_area.setWidget(image_label)
+
+    def _show_shape_not_match(self):
+        label = QtWidgets.QLabel()
+        label.setText('Images have different sizes.')
+        self._diff_image_scroll_area.setWidget(label)
 
     def _load_first_image_from_file(self):
         image = self._load_image_from_file()

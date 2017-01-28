@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from imagediffer.loader import load_image_from_file, load_image_from_url
+from imagediffer.lib.loader import load_image_from_file, load_image_from_url
 
 
 def test_file_not_found():

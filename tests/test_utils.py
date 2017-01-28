@@ -1,8 +1,8 @@
 import pytest
 import numpy as np
 
-from imagediffer.loader import load_image_from_file
-from imagediffer.utils import norm_color, extract_colors, to_red, to_green, to_blue, to_grayscale
+from imagediffer.lib.loader import load_image_from_file
+from imagediffer.lib.utils import norm_color, extract_colors, to_red, to_green, to_blue, to_grayscale
 
 
 @pytest.fixture

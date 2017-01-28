@@ -1,3 +1,2 @@
-import imagediffer.loader
-import imagediffer.differ
-import imagediffer.utils
+import imagediffer.lib
+import imagediffer.app

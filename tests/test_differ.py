@@ -68,9 +68,9 @@ def test_chebyshev_distance(image1, image2, ref):
     ('red', 'light_red', 'diff_red_left_yellow', chebyshev_distance, .5, 0., (1., 1., 0.)),
 ])
 def test_diff(image1, image2, diff_image, method, mismatch, tolerance, diff_color):
-    image1 = norm_color(load_test_image(image1))
-    image2 = norm_color(load_test_image(image2))
-    diff_image = norm_color(load_test_image(diff_image))
+    image1 = load_test_image(image1)
+    image2 = load_test_image(image2)
+    diff_image = load_test_image(diff_image)
     result, pctg = diff(image1, image2, method, tolerance, diff_color)
     assert np.array_equal(result, diff_image)
     assert abs(pctg - mismatch) < 0.0001

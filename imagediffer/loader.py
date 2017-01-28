@@ -1,9 +1,11 @@
 from scipy import misc
 import requests
 
+from .utils import norm_color
+
 
 def load_image_from_file(file):
-    return misc.imread(file)
+    return norm_color(misc.imread(file))
 
 
 def load_image_from_url(url):
@@ -12,4 +14,4 @@ def load_image_from_url(url):
     if response.status_code != 200:
         raise ValueError('Invalid image URL')
 
-    return misc.imread(response.raw)
+    return load_image_from_file(response.raw)

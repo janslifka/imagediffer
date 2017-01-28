@@ -10,8 +10,8 @@ def test_file_not_found():
 
 
 def test_load_from_file():
-    ref = [[[255, 0, 0], [255, 255, 255]],
-           [[255, 255, 255], [255, 0, 0]]]
+    ref = [[[1., 0., 0.], [1., 1., 1.]],
+           [[1., 1., 1.], [1., 0., 0.]]]
 
     image = load_image_from_file('tests/fixtures/checker-red-white.png')
     assert np.array_equal(image, ref)

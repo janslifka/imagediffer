@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, QtGui, uic
 import numpy as np
 
 from .config import PATH_UI_MAINWINDOW, PATH_UI_OPEN_IMAGE
-from ..lib.differ import euclidean_distance, chebyshev_distance, diff, calculate_mse
+from ..lib.differ import euclidean_distance, chebyshev_distance, diff, calculate_mse, calculate_ssim
 from ..lib.loader import load_image_from_file, load_image_from_url
 from .image_struct import ImageStruct
 
@@ -125,10 +125,12 @@ class App:
                 self._show_image(self._diff_image_scroll_area, diff_image)
                 self._mismatch_value.setText('{}%'.format(round(pctg * 100, 2)))
                 self._mse_value.setText('{}'.format(round(calculate_mse(image1, image2), 2)))
+                self._ssim_value.setText('{}'.format(round(calculate_ssim(image1, image2), 2)))
             else:
                 self._show_shape_not_match()
                 self._mismatch_value.setText('-')
                 self._mse_value.setText('-')
+                self._ssim_value.setText('-')
 
     def _show_image(self, scroll_area, image):
         image = (image * 255).astype(np.uint8)

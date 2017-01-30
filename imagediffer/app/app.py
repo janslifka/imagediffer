@@ -12,6 +12,16 @@ COLOR_MODES = ['colors', 'grayscale', 'red', 'blue', 'green']
 
 
 class App:
+    """PyQt5 application for using core library.
+
+    To run the application, simply create an instance and call run method.
+
+    .. code-block:: python
+
+       from imagediffer.app.app import App
+
+       App().run()
+    """
     def __init__(self):
         self._app = QtWidgets.QApplication([])
 
@@ -32,6 +42,8 @@ class App:
         self._diff = None
 
     def run(self):
+        """Run the application.
+        """
         self._window.show()
         return self._app.exec_()
 

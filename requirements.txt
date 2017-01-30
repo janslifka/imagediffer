@@ -1,0 +1,9 @@
+numpy
+Pillow
+PyQt5
+pyssim
+pytest
+requests
+scipy
+Sphinx
+sphinx-rtd-theme

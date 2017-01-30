@@ -1,6 +1,9 @@
 Image Differ
 ============
 
+.. image:: https://travis-ci.org/janslifka/imagediffer.svg?branch=master
+   :alt: Tests Status
+
 .. image:: https://readthedocs.org/projects/imagediffer/badge/?version=latest
    :target: http://imagediffer.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
@@ -15,6 +18,43 @@ Image Differ is a tool for image comparison. It loads 2 images (either local fil
 It can also calculate comparison stats for individual color channels or convert images to grayscale.
 
 Image Differ can be used as a library for other projects or it provides GUI application.
+
+
+Installation
+------------
+
+The easiest way to install imagediffer is using pip
+
+.. code-block:: bash
+
+   python -m pip install imagediffer
+
+
+You can also clone this repository, install requirements using pip and then install imagediffer
+using setup.py.
+
+.. code-block:: bash
+
+   python setup.py install
+
+
+Documentation
+-------------
+
+- `API Documentation <http://imagediffer.readthedocs.io>`_
+
+If you want to build documentation yourself, you need to have `sphinx <http://www.sphinx-doc.org/>`_ installed and
+then run ``make html`` in the docs folder.
+
+
+Development
+-----------
+
+Simply clone the project and install dependencies from ``requirements.txt`` file using pip.
+
+.. code-block:: bash
+
+   python -m pip install -r requirements.txt
 
 
 Used libraries

@@ -33,5 +33,5 @@ Indices and tables
 
 .. raw:: html
 
-    <a href="https://github.com/janslifka/image-differ"><img style="position: absolute; top: 0; right: 0; border: 0;"
+    <a href="https://github.com/janslifka/imagediffer"><img style="position: absolute; top: 0; right: 0; border: 0;"
        src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>

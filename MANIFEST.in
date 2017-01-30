@@ -1,0 +1,2 @@
+include imagediffer/app/ui/mainwindow.ui
+include imagediffer/app/ui/open_image.ui

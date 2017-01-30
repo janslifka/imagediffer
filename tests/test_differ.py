@@ -30,10 +30,6 @@ def test_euclidean_distance(image1, image2, ref):
     image2 = np.array(image2)
     ref = np.array(ref)
     distances = euclidean_distance(image1, image2)
-
-    print(distances)
-    print(ref)
-
     assert np.all(np.isclose(distances, ref))
 
 
@@ -65,8 +61,8 @@ def test_chebyshev_distance(image1, image2, ref):
     ('red', 'blue', 'diff_all', chebyshev_distance, 1., 0., (1., 0, 1., 1.)),
     ('red', 'light_red', 'diff_red_left', euclidean_distance, .5, 0., (1., 0, 1., 1.)),
     ('red', 'light_red', 'diff_red_left', chebyshev_distance, .5, 0., (1., 0, 1., 1.)),
-    ('red', 'light_red', 'red', euclidean_distance, 0., .3, (1., 0, 1., 1.)),
-    ('red', 'light_red', 'red', chebyshev_distance, 0., .3, (1., 0, 1., 1.)),
+    ('red', 'light_red', 'red_blended', euclidean_distance, 0., .3, (1., 0, 1., 1.)),
+    ('red', 'light_red', 'red_blended', chebyshev_distance, 0., .3, (1., 0, 1., 1.)),
     ('red', 'light_red', 'diff_red_left_yellow', euclidean_distance, .5, 0., (1., 1., 0., 1.)),
     ('red', 'light_red', 'diff_red_left_yellow', chebyshev_distance, .5, 0., (1., 1., 0., 1.)),
 ])

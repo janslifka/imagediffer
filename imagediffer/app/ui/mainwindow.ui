@@ -299,6 +299,8 @@
     <addaction name="separator"/>
     <addaction name="action_load_first_image_from_URL"/>
     <addaction name="action_load_second_image_from_URL"/>
+    <addaction name="separator"/>
+    <addaction name="action_save_diff_image"/>
    </widget>
    <addaction name="menuImage"/>
   </widget>
@@ -321,6 +323,14 @@
   <action name="action_load_second_image_from_URL">
    <property name="text">
     <string>Load second image from URL</string>
+   </property>
+  </action>
+  <action name="action_save_diff_image">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Save diff image</string>
    </property>
   </action>
  </widget>

@@ -3,7 +3,7 @@ import numpy as np
 
 from .config import PATH_UI_MAINWINDOW, PATH_UI_OPEN_IMAGE
 from ..lib.differ import euclidean_distance, chebyshev_distance, diff, calculate_mse, calculate_ssim
-from ..lib.loader import load_image_from_file, load_image_from_url
+from ..lib.loader import load_image_from_file, load_image_from_url, save_image
 from .image_struct import ImageStruct
 
 COLOR_MODES = ['colors', 'grayscale', 'red', 'blue', 'green']
@@ -77,6 +77,9 @@ class App:
         action = self._window.findChild(QtWidgets.QAction, 'action_load_second_image_from_URL')
         action.triggered.connect(lambda: self._load_second_image_from_url())
 
+        self._save_action = self._window.findChild(QtWidgets.QAction, 'action_save_diff_image')
+        self._save_action.triggered.connect(lambda: self._save_diff_image())
+
     def _set_method_euclidean(self, enabled):
         if enabled:
             self._comparison_method = euclidean_distance
@@ -121,16 +124,18 @@ class App:
 
         if image1 is not None and image2 is not None:
             if image1.shape == image2.shape:
-                diff_image, pctg = diff(image1, image2, self._comparison_method, self._tolerance)
-                self._show_image(self._diff_image_scroll_area, diff_image)
+                self._diff, pctg = diff(image1, image2, self._comparison_method, self._tolerance)
+                self._show_image(self._diff_image_scroll_area, self._diff)
                 self._mismatch_value.setText('{}%'.format(round(pctg * 100, 2)))
                 self._mse_value.setText('{}'.format(round(calculate_mse(image1, image2), 2)))
                 self._ssim_value.setText('{}'.format(round(calculate_ssim(image1, image2), 2)))
+                self._save_action.setEnabled(True)
             else:
                 self._show_shape_not_match()
                 self._mismatch_value.setText('-')
                 self._mse_value.setText('-')
                 self._ssim_value.setText('-')
+                self._save_action.setEnabled(False)
 
     def _show_image(self, scroll_area, image):
         image = (image * 255).astype(np.uint8)
@@ -196,3 +201,8 @@ class App:
             QtWidgets.QMessageBox.critical(self._window, 'File error', 'Unable to open image from given URL')
 
         return None
+
+    def _save_diff_image(self):
+        file_name = QtWidgets.QFileDialog.getSaveFileName(self._window)
+        if len(file_name[0]) > 0:
+            save_image(self._diff, file_name[0])

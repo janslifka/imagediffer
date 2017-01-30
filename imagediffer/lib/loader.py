@@ -1,5 +1,8 @@
 from scipy import misc
 import requests
+from PIL import Image
+import numpy as np
+from os.path import splitext
 
 from .utils import norm_color
 
@@ -15,3 +18,10 @@ def load_image_from_url(url):
         raise ValueError('Invalid image URL')
 
     return load_image_from_file(response.raw)
+
+
+def save_image(image, path):
+    filename, extension = splitext(path)
+    if extension != '.png':
+        path = '{}{}'.format(filename, '.png')
+    Image.fromarray((image * 255).astype(np.uint8), mode='RGBA').save(path)

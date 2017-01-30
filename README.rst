@@ -1,10 +1,13 @@
 Image Differ
 ============
 
+.. image:: https://badge.fury.io/py/imagediffer.svg
+    :target: https://pypi.python.org/pypi/imagediffer
+
 .. image:: https://travis-ci.org/janslifka/imagediffer.svg?branch=master
 
 .. image:: https://readthedocs.org/projects/imagediffer/badge/?version=latest
-   :target: http://imagediffer.readthedocs.io/en/latest/?badge=latest
+    :target: http://imagediffer.readthedocs.io/en/latest/?badge=latest
 
 
 Image Differ is a tool for image comparison. It loads 2 images (either local files or from the internet) and generates the diff image that shows where the images are different. It also calculates:
@@ -23,7 +26,7 @@ Installation
 
 The easiest way to install imagediffer is using pip
 
-.. code-block:: bash
+.. code-block::
 
    python -m pip install imagediffer
 
@@ -31,7 +34,7 @@ The easiest way to install imagediffer is using pip
 You can also clone this repository, install requirements using pip and then install imagediffer
 using setup.py.
 
-.. code-block:: bash
+.. code-block::
 
    python setup.py install
 
@@ -41,7 +44,7 @@ Documentation
 
 - `API Documentation <http://imagediffer.readthedocs.io>`_
 
-If you want to build documentation yourself, you need to have `sphinx <http://www.sphinx-doc.org/>`_ installed and
+If you want to build documentation yourself, you need to have `sphinx doc <http://www.sphinx-doc.org/>`_ installed and
 then run ``make html`` in the docs folder.
 
 
@@ -50,7 +53,7 @@ Development
 
 Simply clone the project and install dependencies from ``requirements.txt`` file using pip.
 
-.. code-block:: bash
+.. code-block::
 
    python -m pip install -r requirements.txt
 

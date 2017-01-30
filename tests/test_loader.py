@@ -3,7 +3,7 @@ import pytest
 import os
 import shutil
 
-from imagediffer.lib.loader import load_image_from_file, load_image_from_url, save_image
+from imagediffer.core.loader import load_image_from_file, load_image_from_url, save_image
 
 
 @pytest.yield_fixture

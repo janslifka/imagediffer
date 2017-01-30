@@ -2,8 +2,8 @@ import pytest
 import numpy as np
 import math
 
-from imagediffer.lib.loader import load_image_from_file
-from imagediffer.lib.differ import euclidean_distance, chebyshev_distance, diff
+from imagediffer.core.loader import load_image_from_file
+from imagediffer.core.differ import euclidean_distance, chebyshev_distance, diff
 
 
 def load_test_image(name):

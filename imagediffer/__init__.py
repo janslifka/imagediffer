@@ -1,2 +1,2 @@
-import imagediffer.lib
+import imagediffer.core
 import imagediffer.app

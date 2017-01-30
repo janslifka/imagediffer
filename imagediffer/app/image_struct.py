@@ -1,4 +1,4 @@
-from ..lib.utils import to_grayscale, to_red, to_green, to_blue
+from ..core.utils import to_grayscale, to_red, to_green, to_blue
 
 
 class ImageStruct:

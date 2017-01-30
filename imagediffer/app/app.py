@@ -2,8 +2,8 @@ from PyQt5 import QtWidgets, QtGui, uic
 import numpy as np
 
 from .config import PATH_UI_MAINWINDOW, PATH_UI_OPEN_IMAGE
-from ..lib.differ import euclidean_distance, chebyshev_distance, diff, calculate_mse, calculate_ssim
-from ..lib.loader import load_image_from_file, load_image_from_url, save_image
+from ..core.differ import euclidean_distance, chebyshev_distance, diff, calculate_mse, calculate_ssim
+from ..core.loader import load_image_from_file, load_image_from_url, save_image
 from .image_struct import ImageStruct
 
 COLOR_MODES = ['colors', 'grayscale', 'red', 'blue', 'green']

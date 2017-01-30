@@ -1,8 +1,9 @@
-from scipy import misc
+from os.path import splitext
+
+import numpy as np
 import requests
 from PIL import Image
-import numpy as np
-from os.path import splitext
+from scipy import misc
 
 from .utils import norm_color
 

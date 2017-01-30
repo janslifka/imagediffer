@@ -1,7 +1,6 @@
 import numpy as np
-import math
-from ssim import compute_ssim
 from PIL import Image
+from ssim import compute_ssim
 
 from .utils import extract_colors
 

@@ -1,6 +1,7 @@
-import pytest
-import numpy as np
 import math
+
+import numpy as np
+import pytest
 
 from imagediffer.core.loader import load_image_from_file
 from imagediffer.core.differ import euclidean_distance, chebyshev_distance, diff

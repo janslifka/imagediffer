@@ -1,7 +1,8 @@
-import numpy as np
-import pytest
 import os
 import shutil
+
+import numpy as np
+import pytest
 
 from imagediffer.core.loader import load_image_from_file, load_image_from_url, save_image
 

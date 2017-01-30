@@ -1,5 +1,5 @@
-import pytest
 import numpy as np
+import pytest
 
 from imagediffer.core.loader import load_image_from_file
 from imagediffer.core.utils import norm_color, extract_colors, to_red, to_green, to_blue, to_grayscale

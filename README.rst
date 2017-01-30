@@ -1,6 +1,11 @@
 Image Differ
 ============
 
+.. image:: https://readthedocs.org/projects/imagediffer/badge/?version=latest
+   :target: http://imagediffer.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
+
 Image Differ is a tool for image comparison. It loads 2 images (either local files or from the internet) and generates the diff image that shows where the images are different. It also calculates:
 
 - Percentage of pixels where the images differ (with adjustable threshold for difference)

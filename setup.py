@@ -12,7 +12,7 @@ tests_requires = ['pytest']
 
 setup(
     name='imagediffer',
-    version='0.1',
+    version='0.1.4',
     description='Tool for image diffs.',
     author='Jan Slifka',
     author_email='slifkjan@fit.cvut.cz',

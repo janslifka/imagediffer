@@ -39,6 +39,22 @@ using setup.py.
    python setup.py install
 
 
+How to use the app
+------------------
+
+.. code-block::
+
+	python -m imagediffer
+
+Once the application window is opened you can use ``Image > Load first/second image from file/URL`` to open images. If the first and the second image have the same dimensions, the comparison image is generated.
+
+You can choose if you want to use `euclidean <https://en.wikipedia.org/wiki/Euclidean_distance>`_ or `chebyshev <https://en.wikipedia.org/wiki/Chebyshev_distance>`_ distance for color comparison. Toleracne defines the threshold where the colors are considered the same.
+
+You can choose what color channels you want to compare from full color comparison, grayscale or individual color channels.
+
+Stats show Mismatch - how many pixels exceeded the tolerance threshold, MSE (`mean squared error <https://en.wikipedia.org/wiki/Mean_squared_error>`_) and SSIM (`structural similarity index <https://en.wikipedia.org/wiki/Structural_similarity>`_).
+
+
 Documentation
 -------------
 
